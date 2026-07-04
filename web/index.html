@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Product Scanner - Professional Mobile Application for Inventory and Pricing Management.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Product Scanner">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Product Scanner</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .loader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-container {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #3f51b5, #00bcd4);
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(63, 81, 181, 0.3);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .logo-container svg {
+      width: 60px;
+      height: 60px;
+      fill: white;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #3f51b5;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6c757d;
+      margin: 0;
+    }
+
+    .progress-bar {
+      width: 200px;
+      height: 6px;
+      background-color: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-value {
+      height: 100%;
+      background: linear-gradient(90deg, #3f51b5, #00bcd4);
+      width: 0%;
+      border-radius: 10px;
+      animation: load 3s infinite linear;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 10px 30px rgba(63, 81, 181, 0.3); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(63, 81, 181, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 10px 30px rgba(63, 81, 181, 0.3); }
+    }
+
+    @keyframes load {
+      0% { width: 0%; transform: translateX(-100%); }
+      50% { width: 100%; transform: translateX(0%); }
+      100% { width: 100%; transform: translateX(100%); }
+    }
+  </style>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <div class="loader-container" id="loading-indicator">
+    <div class="logo-container">
+      <svg viewBox="0 0 24 24">
+        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+      </svg>
+    </div>
+    <div style="text-align: center;">
+      <h1 class="title">Product Scanner</h1>
+      <p class="subtitle">Electrical Solutions</p>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-value"></div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            // Hide the loading indicator
+            document.getElementById('loading-indicator').style.display = 'none';
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
