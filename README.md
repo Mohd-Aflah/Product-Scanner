@@ -2,12 +2,11 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)
 ![Dart](https://img.shields.io/badge/Dart-3.x-blue?logo=dart)
-![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-success)
+![Architecture](https://img.shields.io/badge/Architecture-Feature--Driven-success)
 ![State Management](https://img.shields.io/badge/State%20Management-Riverpod-blue)
 ![Database](https://img.shields.io/badge/Database-Hive%20Offline-orange)
 
-The complete, offline-first Flutter mobile application for **Product Scanner**, following company standard clean architecture.
-
+**Product Scanner** is a comprehensive, offline-first mobile application built with Flutter. It is designed to efficiently manage product inventories by utilizing device capabilities like the camera for barcode scanning. All data is persisted locally to ensure uninterrupted access even without an internet connection. The application emphasizes performance, modularity, and a robust user experience with full support for light and dark themes.
 ## 🚀 Features
 
 - **Completely Offline**: All data is stored locally via [Hive](https://pub.dev/packages/hive).
@@ -18,8 +17,8 @@ The complete, offline-first Flutter mobile application for **Product Scanner**, 
 - **Excel Export**: Export the entire database into an `.xlsx` file seamlessly.
 - **Theming**: Integrated Light/Dark modes & dynamic Font Sizing.
 
-## 🏗 Architecture (Clean Architecture)
-The app adheres to a company standard **Clean Architecture** model designed for modularity, scalability, and testability.
+## 🏗 Application Structure
+The application code is organized to maximize maintainability, separating concerns across distinct layers:
 
 ```text
 lib/
@@ -51,16 +50,20 @@ lib/
 └── main.dart               # App Entrypoint
 ```
 
-## 🛠 Tech Stack
+## 🛠 Detailed Tech Stack & Tools Used
 
-- **Framework**: Flutter
-- **Language**: Dart
-- **State Management**: Riverpod (`flutter_riverpod`)
-- **Local Database**: Hive (`hive`, `hive_flutter`)
-- **Scanner**: Mobile Scanner (`mobile_scanner`)
-- **Excel Export**: Excel (`excel`)
-- **File System**: Path Provider (`path_provider`), File Picker (`file_picker`)
-- **Permissions**: Permission Handler (`permission_handler`)
+- **Framework**: [Flutter](https://flutter.dev/) - UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
+- **Programming Language**: [Dart](https://dart.dev/) (v3.x)
+- **State Management**: [Riverpod (`flutter_riverpod`)](https://pub.dev/packages/flutter_riverpod) - A reactive caching and data-binding framework that provides a robust approach to managing application state and dependency injection.
+- **Local Database**: [Hive (`hive`, `hive_flutter`)](https://pub.dev/packages/hive) - A lightweight and blazing fast key-value database written in pure Dart, used here for seamless offline-first capabilities.
+- **Barcode & QR Scanning**: [Mobile Scanner (`mobile_scanner`)](https://pub.dev/packages/mobile_scanner) - A universal scanner plugin that accesses the device camera to accurately interpret product barcodes.
+- **Data Exporting**: [Excel (`excel`)](https://pub.dev/packages/excel) - Used to generate and write `.xlsx` files, allowing users to export their product database.
+- **File System & IO**: 
+  - [Path Provider (`path_provider`)](https://pub.dev/packages/path_provider) - Finds commonly used locations on the filesystem.
+  - [File Picker (`file_picker`)](https://pub.dev/packages/file_picker) - A package that allows picking and saving files directly from the device's native file explorer.
+- **Permissions**: [Permission Handler (`permission_handler`)](https://pub.dev/packages/permission_handler) - A unified API for requesting and checking device permissions (like Camera and Storage access).
+- **Date Formatting**: [Intl (`intl`)](https://pub.dev/packages/intl) - Provides internationalization and localization facilities, including date and number formatting.
+- **Sharing Capabilities**: [Share Plus (`share_plus`)](https://pub.dev/packages/share_plus) - Used to share the exported Excel files to other apps or services.
 
 ## ⚙️ Getting Started
 
